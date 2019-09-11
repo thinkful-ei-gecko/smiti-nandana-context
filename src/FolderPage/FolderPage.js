@@ -1,9 +1,12 @@
 import React from "react";
 
-export default function FolderPage(){
+
+
+export default function FolderPage(props){
   return(
     <div className ="FolderPage">
-    <p>FolderPage</p>
+      <p>FolderPage</p>
+      <button onClick={e => props.history.push("/")}>Back</button>
     </div>
 
   );
