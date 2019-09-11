@@ -1,0 +1,14 @@
+.sidebar {
+    width: 100px;   
+    color: black;
+    background-color: white;
+}
+
+button{
+    float: left;
+    margin-left: 60px;
+    padding: 15px;
+    background-color: purple;
+    color: white;
+    border: none;
+}

@@ -15,18 +15,17 @@ state = {
 
 
   render(){
-    console.log(this.state.store)
+  console.log(this.state.store.folders)
 
   return (
     <BrowserRouter>
       <div className="App">
       
       <Header />
-      <NavBar />
+      <NavBar store={this.state.store} />
       <Switch>
-        <Route exact path="/" render={(props) => <MainPage {...props} store={this.state.store} />}
-         />
-        <Route path="/folderPage" component={FolderPage} />
+        <Route exact path="/" render={(props) => <MainPage {...props} store={this.state.store} />}/>
+        <Route path="/FolderPage" render={(props) => <FolderPage {...props} store={this.state.store}/>}/>
         <Route path="/notePage" component={NotePage} />   
         <Route render={() => <h2>Page Not Found</h2>}/>
 
