@@ -13,7 +13,8 @@ class App extends React.Component {
 state = {
   store: {
     folders:[],
-    notes:[]
+    notes:[],
+
   }
 }
 
@@ -23,6 +24,13 @@ componentDidMount(){
   .then(response => this.setState({store: response}));
 }
 
+removeNotes = noteId => {
+  const newNotes = this.state.notes.filter(note =>
+    note.id !== noteId)
+    this.setState({
+      notes:newNotes
+    })
+}
 
 
 
@@ -32,7 +40,8 @@ componentDidMount(){
 
   return (
     <StoreContext.Provider value={{
-      store:this.state.store
+      store:this.state.store,
+      removeNotes:this.removeNotes
     }}>
 
     
