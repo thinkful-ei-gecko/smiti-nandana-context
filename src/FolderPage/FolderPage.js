@@ -1,22 +1,18 @@
 import React from "react";
 import './FolderPage.css';
 import StoreContext from '../StoreContext';
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
+
 
 
 export default class FolderPage extends React.Component{
   static contextType = StoreContext;
-  static propTypes ={
-    match: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
+
   render(){
-    const store = this.context
-    const {match,history} = this.props;
+    const store = this.context.store;
+ 
  //console.log(props.match.params.id);
   const filternoteid = store.notes.filter((note) => {
-    return note.folderId === match.params.id
+    return note.folderId === this.props.match.params.id
   } );
   const folderList = filternoteid.map(note => {
     return(
@@ -31,7 +27,7 @@ export default class FolderPage extends React.Component{
   return(
     <div className ="FolderPage">
       {folderList}
-      <button onClick={e => history.push("/")}>Back</button>
+      <button onClick={e => this.props.history.push("/")}>Back</button>
     </div>
 
   );

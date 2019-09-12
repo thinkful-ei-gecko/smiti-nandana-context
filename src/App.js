@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import DUMMYSTORE from './dummystore'
+import {Route, Switch } from "react-router-dom";
+//import DUMMYSTORE from './dummystore'
 import Header from './Header/Header';
 import NavBar from './NavBar/NavBar';
 import MainPage from './MainPage/MainPage';
@@ -11,17 +11,31 @@ import StoreContext from './StoreContext';
 
 class App extends React.Component {
 state = {
-  store: DUMMYSTORE
+  store: {
+    folders:[],
+    notes:[]
+  }
+}
+
+componentDidMount(){
+  fetch("http://localhost:9090/db")
+  .then(res => res.json())
+  .then(response => this.setState({store: response}));
 }
 
 
+
+
+
   render(){
-  console.log(this.state.store.folders)
+  console.log(this.state)
 
   return (
     <StoreContext.Provider value={{
       store:this.state.store
     }}>
+
+    
     <div className="App">
       <Header />
       <NavBar store={this.state.store} />
