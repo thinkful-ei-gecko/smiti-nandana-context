@@ -25,7 +25,7 @@ state = {
       <NavBar store={this.state.store} />
       <Switch>
         <Route exact path="/" render={(props) => <MainPage {...props} store={this.state.store} />}/>
-        <Route path="/FolderPage" render={(props) => <FolderPage {...props} store={this.state.store}/>}/>
+        <Route path="/FolderPage/:id" render={(props) => <FolderPage {...props} store={this.state.store}/>}/>
         <Route path="/notePage" component={NotePage} />   
         <Route render={() => <h2>Page Not Found</h2>}/>
 

@@ -4,15 +4,16 @@ import './FolderPage.css';
 
 
 export default function FolderPage(props){
-
-  const folderList = props.store.folders.map(folder => {
+ console.log(props.match.params.id);
+  const filternoteid = props.store.notes.filter((note) => {
+    return note.folderId === props.match.params.id
+  } );
+  const folderList = filternoteid.map(note => {
     return(
       
-        <li  className= "sidebar" key={folder.id}>
-          <h4>{folder.name}</h4>
+        <li  className= "sidebar" key={note.id}>
+          <h4>{note.name}</h4>
         </li>
-
- 
       
     )
   })
