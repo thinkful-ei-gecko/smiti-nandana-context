@@ -1,9 +1,12 @@
 import React from "react";
 import './MainPage.css';
+import StoreContext from '../StoreContext';
 
-export default function MainPage(props){
-
-  const mainList = props.store.notes.map(note => {
+export default class MainPage extends React.Component{
+  static contextType = StoreContext;
+  render(){
+    const store = this.context.store
+  const mainList = store.notes.map(note => {
     return(
       <li className="mainpage" key={note.id}>
         <h4>{note.name}</h4>
@@ -12,7 +15,7 @@ export default function MainPage(props){
     )
   })
 
-console.log(props.store)
+
 
   return(
     
@@ -21,4 +24,5 @@ console.log(props.store)
     </div>
 
   );
+}
 }

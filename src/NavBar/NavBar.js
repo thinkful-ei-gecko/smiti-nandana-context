@@ -1,11 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import StoreContext from '../StoreContext';
 
 
+export default class NavBar extends React.Component{
 
-export default function NavBar(props){
-
-  const folderList = props.store.folders.map(folder => {
+static contextType = StoreContext;
+render(){
+  const store = this.context.store
+  console.log(store);
+  const folderList = store.folders.map(folder => {
     return(
       
         <li  className= "sidebar" key={folder.id}>
@@ -22,9 +26,10 @@ export default function NavBar(props){
   return(
     <div className ="FolderPage">
       {folderList}
-      <button onClick={e => props.history.push("/")}>Back</button>
+      <button onClick={e => this.props.history.push("/")}>Back</button>
       
     </div>
 
   );
+}
 }

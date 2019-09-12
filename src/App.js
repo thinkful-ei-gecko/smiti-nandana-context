@@ -7,6 +7,7 @@ import NavBar from './NavBar/NavBar';
 import MainPage from './MainPage/MainPage';
 import NotePage from './NotePage/NotePage';
 import FolderPage from './FolderPage/FolderPage';
+import StoreContext from './StoreContext';
 
 class App extends React.Component {
 state = {
@@ -18,22 +19,23 @@ state = {
   console.log(this.state.store.folders)
 
   return (
-    <BrowserRouter>
-      <div className="App">
-      
+    <StoreContext.Provider value={{
+      store:this.state.store
+    }}>
+    <div className="App">
       <Header />
       <NavBar store={this.state.store} />
       <Switch>
-        <Route exact path="/" render={(props) => <MainPage {...props} store={this.state.store} />}/>
-        <Route path="/FolderPage/:id" render={(props) => <FolderPage {...props} store={this.state.store}/>}/>
+        <Route exact path="/" render={(props) => <MainPage {...props}  />}/>
+        <Route path="/FolderPage/:id" render={(props) => <FolderPage {...props} />}/>
         <Route path="/notePage" component={NotePage} />   
         <Route render={() => <h2>Page Not Found</h2>}/>
 
       </Switch>
                     
       </div>   
-    </BrowserRouter>
-  
+    
+      </StoreContext.Provider>
   );
   }
 }
