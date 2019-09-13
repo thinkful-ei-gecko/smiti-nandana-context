@@ -13,7 +13,8 @@ class App extends React.Component {
 state = {
   store: {
     folders:[],
-    notes:[]
+    notes:[],
+
   }
 }
 
@@ -23,6 +24,7 @@ componentDidMount(){
   .then(response => this.setState({store: response}));
 }
 
+<<<<<<< HEAD
 removeNote = (noteId) => {
   fetch(`http://localhost:9090/notes/${noteId}`, {
     method: 'DELETE',
@@ -35,6 +37,18 @@ removeNote = (noteId) => {
   this.setState({store}); // store: store
 });
 };
+=======
+removeNotes = noteId => {
+  const newNotes = this.state.notes.filter(note =>
+    note.id !== noteId)
+    this.setState({
+      notes:newNotes
+    })
+}
+
+
+
+>>>>>>> 5baadc54d442933975b1ad801ff29936ccef0bfa
 
   render(){
   console.log(this.state)
@@ -42,7 +56,11 @@ removeNote = (noteId) => {
   return (
     <StoreContext.Provider value={{
       store:this.state.store,
+<<<<<<< HEAD
       removeNote: this.removeNote
+=======
+      removeNotes:this.removeNotes
+>>>>>>> 5baadc54d442933975b1ad801ff29936ccef0bfa
     }}>
 
     
