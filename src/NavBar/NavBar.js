@@ -26,7 +26,7 @@ render(){
   return(
     <div className ="FolderPage">
       {folderList}
-      <button onClick={e => this.props.history.push("/")}>Back</button>
+      {/* <button onClick={e => this.context.store.history.push("/")}>Back</button> */}
       
     </div>
 

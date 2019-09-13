@@ -5,15 +5,7 @@ import StoreContext from '../StoreContext';
 export default class MainPage extends React.Component{
   static contextType = StoreContext;
 
-  removeNotes = (noteId) => {
-  
-    fetch(`http://localhost:9090/notes/${noteId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-    },
-  }).then(res => res.json());
-};
+ 
 
   render(){
     const store = this.context.store
@@ -23,7 +15,7 @@ export default class MainPage extends React.Component{
       <li className="mainpage" key={note.id}>
         <h4>{note.name}</h4>
         <p>Date modified on {Date(note.modified)}</p>
-        <button className="remove" onClick={() => removeNotes(note.id)}>Remove</button>
+        <button className="remove" onClick={() => this.context.removeNote(note.id)}>Remove</button>
       </li>
     )
   })

@@ -23,16 +23,26 @@ componentDidMount(){
   .then(response => this.setState({store: response}));
 }
 
-
-
-
+removeNote = (noteId) => {
+  fetch(`http://localhost:9090/notes/${noteId}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json'
+  },
+}).then(res => {
+  let store = this.state.store;
+  store.notes = this.state.store.notes.filter(note=>note.id!==noteId);
+  this.setState({store}); // store: store
+});
+};
 
   render(){
   console.log(this.state)
 
   return (
     <StoreContext.Provider value={{
-      store:this.state.store
+      store:this.state.store,
+      removeNote: this.removeNote
     }}>
 
     

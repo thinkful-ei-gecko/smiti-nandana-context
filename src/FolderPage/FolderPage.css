@@ -1,5 +1,7 @@
 .sidebar {
-    width: 100px;   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;   
     color: black;
     background-color: white;
 }

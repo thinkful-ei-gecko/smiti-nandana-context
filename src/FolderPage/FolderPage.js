@@ -10,7 +10,7 @@ export default class FolderPage extends React.Component{
   render(){
     const store = this.context.store;
  
- //console.log(props.match.params.id);
+     //console.log(props.match.params.id);
   const filternoteid = store.notes.filter((note) => {
     return note.folderId === this.props.match.params.id
   } );
@@ -27,7 +27,7 @@ export default class FolderPage extends React.Component{
   return(
     <div className ="FolderPage">
       {folderList}
-      <button onClick={e => this.props.history.push("/")}>Back</button>
+      <button onClick={e => this.history.push("/")}>Back</button>
     </div>
 
   );
